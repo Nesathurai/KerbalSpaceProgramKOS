@@ -1,6 +1,6 @@
-run "0:boot/common.ks".
-run "0:boot/lib_nav.ks".
-run "0:boot/pid_gui.ks".
+run "0:boot/quadcopter/common.ks".
+run "0:boot/lib/lib_nav.ks".
+run "0:boot/lib/gui.ks".
 
 function aot_pid_fusion{
     Parameter pid_alt_out.
@@ -25,10 +25,12 @@ function brake_pid_fusion{
     return list(m1_brake, m2_brake, m3_brake, m4_brake).
 }
 
+// global pid_gui is create_pid_gui().
+
 // best you can get is 50hz physics ticks, but script may be running faster
 until 0{
     update_gui().
-    update_gui_pid(gui_v5:value).
+    update_pid_gui(gui_root:widgets[1]:widgets[0]:value).
     // print m1:allactions.
     // print m1:alleventnames.
     // print m1:part:children.
