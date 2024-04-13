@@ -25,12 +25,12 @@ function brake_pid_fusion{
     return list(m1_brake, m2_brake, m3_brake, m4_brake).
 }
 
-// global pid_gui is create_pid_gui().
+init_gui().
 
 // best you can get is 50hz physics ticks, but script may be running faster
 until 0{
-    update_gui().
-    update_pid_gui(gui_root:widgets[1]:widgets[0]:value).
+    update_debug_gui().
+    update_pid_gui(pid_gui:widgets[1]:widgets[0]:value).
     // print m1:allactions.
     // print m1:alleventnames.
     // print m1:part:children.
